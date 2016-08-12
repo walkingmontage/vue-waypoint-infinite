@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style>
+        *{margin: 0; padding: 0;}
+        li{
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="wallet" v-cloak>
+        <waypoint-infinite
+            :handle-load="handleLoad"
+            v-ref:infinite
+            :on-finish="onFinish"
+            :on-before-page-load="onBeforePageLoad"
+            :on-after-page-load="onAfterPageLoad"
+            @on-load="onLoad">
+            <ul>
+                <li v-for="item in list" track-by="$index">
+                    <p><strong>{{$index}}</strong> - <small>{{item.time}}</small></p>
+                </li>
+            </ul>
+
+            <p style="text-align:center;padding:20px;" slot="end">已无更多</p>
+        </waypoint-infinite>
+    </div>
+
+    <script src="https://fes.wemomo.com/static/dev.js?m=zepto,vue-1.0.24,waypoints"></script>
+    <script src="./static/js/loadOnScroll.js"></script>
+</body>
+</html>
