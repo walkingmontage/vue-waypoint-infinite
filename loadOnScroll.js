@@ -1,6 +1,6 @@
 /**
  * 拉到底部加载更多
- * Created by linzhusong on 16/6/30.
+ * Created by montage on 16/6/30.
  */
 
 
@@ -27,7 +27,7 @@ $(()=>{
 
 
     const loadOnScroll = new Vue({
-        el: '#wallet',
+        el: '#container',
         components: {
             waypointInfinite
         },
