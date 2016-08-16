@@ -9,6 +9,7 @@ import waypointInfinite from './components/waypoint-infinite.vue'
 //dom ready
 $(()=>{
 
+    //模拟ajax
     const $ajax = (o) => {
         setTimeout(() => {
             o.success({
@@ -26,6 +27,7 @@ $(()=>{
     }
 
 
+    //初始化VUE
     const loadOnScroll = new Vue({
         el: '#container',
         components: {
@@ -37,6 +39,7 @@ $(()=>{
             pageIndex: 1
         },
         methods: {
+            //获取数据方法
             handleLoad (callback) {
                 $ajax({
                     type: 'get',
@@ -48,6 +51,9 @@ $(()=>{
                         if(res.ec == 200){
                             this.pageIndex ++;
 
+                            //数据传递给组件
+                            //第一个参数： 是否全部加载完成
+                            //第二个参数： 当前加载的数据 Array
                             callback(!res.is_end , res.data.list)
                         }else{
                             alert('加载失败！')
@@ -56,18 +62,22 @@ $(()=>{
                 })
             },
 
+            //每次加载完成一页
             onLoad (items){
                 this.list = this.list.concat(items)
             },
 
+            //每次加载前
             onBeforePageLoad (){
                 console.log(`start to load page ${this.pageIndex}`)
             },
 
+            //每次加载后
             onAfterPageLoad (){
                 console.log(`loaded`)
             },
 
+            //所有的加载完成
             onFinish (){
                 console.log('finish')
 

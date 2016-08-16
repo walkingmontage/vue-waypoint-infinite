@@ -23,7 +23,6 @@
     <div id="container" v-cloak>
         <waypoint-infinite
             :handle-load="handleLoad"
-            v-ref:infinite
             :on-finish="onFinish"
             :on-before-page-load="onBeforePageLoad"
             :on-after-page-load="onAfterPageLoad"
@@ -37,6 +36,7 @@
             <p style="text-align:center;padding:20px;" slot="end">已无更多</p>
         </waypoint-infinite>
     </div>
+
 
     <script src="zepto,vue-1.0.24,waypoints"></script>
     <script src="./static/js/loadOnScroll.js"></script>
